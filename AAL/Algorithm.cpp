@@ -1,3 +1,10 @@
+/*
+Jakub Jalowiec
+WEiTI PW
+2018
+Sortowanie pojemnikow z farba CMYK.
+*/
+
 #include "Algorithm.h"
 
 using namespace std;

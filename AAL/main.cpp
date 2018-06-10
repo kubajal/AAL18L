@@ -1,5 +1,9 @@
-// AAL.cpp : Defines the entry point for the console application.
-//
+/*
+Jakub Jalowiec
+WEiTI PW
+2018
+Sortowanie pojemnikow z farba CMYK.
+*/
 
 #include "Interface.h"
 
