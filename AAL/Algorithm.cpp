@@ -348,33 +348,38 @@ void Algorithm::fastSort(string &s) {
 #define BRUTEFORCE 2
 #define BRUTEPREPROCESS 3
 
-double Algorithm::run(string s, int type) {
+double Algorithm::run(string s, int type, bool output) {
 
 	moves = 0;
 	switch (type) {
 	case FASTSORT:
-//		cout << endl << "fast sort:                          ";
+		if(output == true)
+			cout << endl << "fast sort:                          ";
 		startTime = clock();
 		fastSort(s);
 		endTime = clock();
 		break;
 	case BRUTEFORCE:
-//		cout << endl << "brute force without  preprocessing: ";
+		if (output == true)
+			cout << endl << "brute force without  preprocessing: ";
 		startTime = clock();
 		bruteForce(s);
 		endTime = clock();
 		break;
 	case BRUTEPREPROCESS:
-//		cout << endl << "brute force with preprocessing:     ";
+		if (output == true)
+			cout << endl << "brute force with preprocessing:     ";
 		startTime = clock();
 		bruteForceWithPreprocessing(s);
 		endTime = clock();
 		break;
 	}
-//	cout << "s: " << s << endl;
+	if (output == true)
+		cout << "s: " << s << endl;
 	clockTicksTaken = endTime - startTime;
 	timeInSeconds = clockTicksTaken / (double)CLOCKS_PER_SEC;
-//	cout << "time [s]: " << timeInSeconds << " moves done: " << moves << endl;
+	if (output == true)
+		cout << "time [s]: " << timeInSeconds << " moves done: " << moves << endl;
 	
 	return timeInSeconds;
 }

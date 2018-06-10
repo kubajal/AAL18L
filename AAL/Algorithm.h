@@ -43,7 +43,7 @@ private:
 	void fastSort(string &s);
 
 public:
-	double run(string s, int type);
+	double run(string s, int type, bool output);
 	string generateRandomSeq(int n);
 	int moves = 0;
 };

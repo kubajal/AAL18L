@@ -15,10 +15,10 @@ void Interface::prompt(int argc, char ** argv){
 	bool user = false;
 	bool fromFile = false;
 	bool fromStdin = false;
-	int N = 0;
-	int K = 0;
-	int R = 0;
-	int step = 0;
+	int N = -1;
+	int K = -1;
+	int R = -1;
+	int step = -1;
 
 	Algorithm algorithm;
 
@@ -70,21 +70,31 @@ void Interface::prompt(int argc, char ** argv){
 			string s2 = s;
 			string s3 = s;
 			cout << "Your input: " << "s: " << s << endl;
-			algorithm.run(s1, FASTSORT);
-			algorithm.run(s2, BRUTEFORCE);
-			algorithm.run(s3, BRUTEPREPROCESS);
+			algorithm.run(s1, FASTSORT, true);
+			algorithm.run(s2, BRUTEFORCE, true);
+			algorithm.run(s3, BRUTEPREPROCESS, true);
 		}
 	}
-	if (benchmark == true) {
+	else if (benchmark == true && N != -1 && K != -1 && R != -1 && step != -1) {
+		cout << "Wait for the table. Calculating..." << endl;
 		Benchmark benchmark = Benchmark(N, K, R, step);
+		cout << endl;
 		benchmark.run();
-		benchmark.setComplexity();
-		benchmark.showTable();
-		benchmark.setComplexity();
-		benchmark.showTable();
-		benchmark.setComplexity();
 		benchmark.showTable();
 		cout << "Done." << endl;
+		cout << "\'FAST SORT\' - results of FAST SORT algorithm, the one that uses combinatorical analysis of the problem." << endl;
+		cout << "\'qFast\' - quotion q for the FAST SORT algorithm." << endl;
+		cout << "\'BRUTE FORCE without preprocessing\' - results of pure BRUTE FORCE algorithm" << endl;
+		cout << "\'qBrut\' - quotion q for the BRUTE FORCE algorithm without preprocessing." << endl;
+		cout << "\'BRUTE FORCE with preprocessing\' - results of BRUTE FORCE algorithm with preprocessing of groups of 4 letters" << endl;
+		cout << "\'qBrut with Preproc\' - quotion q for the BRUTE FORCE algorithm with preprocessing." << endl;
+		cout << endl;
 	}
+	else {
+		cout << "Something went wrong. Did you supply enough arguemnts if using -benchmark? Make sure you use -n, -r, -k -step" << endl;
+	}
+	string s;
+	cout << endl << "Enter anything to exit" << endl;
+	cin >> s;
 }
 
